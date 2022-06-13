@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
+import Themes from "./components/Themes";
 
 const App = () => {
-  return (
-    <div>Hello World!</div>
-  )
-}
+  return <Themes />;
+};
 
-export default App
+export default App;
