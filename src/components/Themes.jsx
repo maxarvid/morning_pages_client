@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useSelector } from "react-redux";
+import ThemesService from "../modules/ThemesService";
 
 const Themes = () => {
-  const [themes, setThemes] = useState([]);
-
-  const fetchThemes = async () => {
-    const response = await axios.get("http://localhost:3001/themes");
-    setThemes(response.data.themes);
-  };
+  const { themes } = useSelector((state) => state.themes);
 
   useEffect(() => {
-    fetchThemes();
+    ThemesService.index();
   }, []);
 
   return (
