@@ -1,0 +1,10 @@
+{
+  "themes": [
+    { "id": 1, "name": "Theme Name" },
+    { "id": 2, "name": "Theme Name 2" },
+    { "id": 3, "name": "Theme Name 3" },
+    { "id": 4, "name": "Theme Name 4" },
+    { "id": 5, "name": "Theme Name 5" },
+    { "id": 6, "name": "Theme Name 6" }
+  ]
+}
