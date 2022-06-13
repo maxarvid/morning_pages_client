@@ -1,1 +1,1 @@
-# morning_pages_client
+# Morning Pages Client
