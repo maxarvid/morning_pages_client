@@ -5,6 +5,6 @@ describe("When user visits application", () => {
   });
 
   it("is expected to display a list of themes", () => {
-    cy.get("[data-cy=themes-list]").should("have.length", 6);
+    cy.get("[data-cy=themes-list]").children().should("have.length", 6);
   });
 });
