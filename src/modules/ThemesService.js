@@ -4,7 +4,7 @@ import { store } from "../state/store";
 
 const ThemesService = {
   async index() {
-    const { data } = await axios.get("http://localhost:3001/themes");
+    const { data } = await axios.get(`${process.env.REACT_APP_API_URL}/themes`);
     store.dispatch(setThemes(data.themes));
   },
 };
