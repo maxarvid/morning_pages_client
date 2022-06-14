@@ -1,1 +1,2 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/277dfb702ae5d70713b4/maintainability)](https://codeclimate.com/github/maxarvid/morning_pages_client/maintainability) [![Test Coverage](https://api.codeclimate.com/v1/badges/277dfb702ae5d70713b4/test_coverage)](https://codeclimate.com/github/maxarvid/morning_pages_client/test_coverage) [![Netlify Status](https://api.netlify.com/api/v1/badges/9929e4fa-f33a-497a-a001-963672e3432d/deploy-status)](https://app.netlify.com/sites/relaxed-malabi-6fa444/deploys)
 # Morning Pages Client
