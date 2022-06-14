@@ -10,7 +10,7 @@ const Themes = () => {
   }, []);
 
   return (
-    <ul data-cy="themes-list">
+    <ul data-cy="themes-list" className="list-none">
       {themes.map((theme) => {
         return <li key={theme.id}>{theme.name}</li>;
       })}
