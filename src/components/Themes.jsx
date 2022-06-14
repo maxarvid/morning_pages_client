@@ -10,9 +10,9 @@ const Themes = () => {
   }, []);
 
   return (
-    <ul data-cy="themes-list">
+    <ul data-cy="themes-list" className="list-none flex justify-around">
       {themes.map((theme) => {
-        return <li key={theme.id}>{theme.name}</li>;
+        return <li className="" key={theme.id}>{theme.name}</li>;
       })}
     </ul>
   );
