@@ -6,15 +6,21 @@ const Themes = () => {
   const { themes } = useSelector((state) => state.themes);
 
   useEffect(() => {
-    ApiService.index('themes');
+    ApiService.index("themes");
   }, []);
 
   return (
-    <ul data-cy="themes-list" className="list-none flex justify-around">
-      {themes.map((theme) => {
-        return <li className="" key={theme.id}>{theme.name}</li>;
-      })}
-    </ul>
+    <div className="fixed top-2 left-2 h-screen w-56 flex flex-col justify-center">
+      <ul data-cy="themes-list">
+        {themes.map((theme) => {
+          return (
+            <li className="" key={theme.id}>
+              {theme.name}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 
