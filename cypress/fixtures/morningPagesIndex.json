@@ -1,11 +1,10 @@
 {
   "morning_pages": [
-    { "id": 1, "title": "Awesome title", "body": "lorem ipsum... " },
-    { "id": 2, "title": "Awesome title again", "body": "lorem ipsum... " },
+    { "id": 1, "title": "Awesome title" },
+    { "id": 2, "title": "Awesome title again" },
     {
       "id": 3,
-      "title": "Awesome title for a third time",
-      "body": "lorem ipsum... "
+      "title": "Awesome title for a third time"
     }
   ]
 }
