@@ -3,20 +3,18 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link data-cy="morning-pages-btn" to="/morning_pages">
-              Morning Pages
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <nav>
+      <ul className="w-screen flex justify-evenly mt-5">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link data-cy="morning-pages-btn" to="/morning_pages">
+            Morning Pages
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

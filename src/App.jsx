@@ -7,7 +7,7 @@ import Themes from "./components/Themes";
 
 const App = () => {
   return (
-    <div className="container mx-auto py-2">
+    <div className="flex">
       <Navigation />
       <Routes>
         <Route path="/" element={<Themes />} />
