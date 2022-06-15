@@ -13,6 +13,6 @@ describe("When user navigates to their Morning Pages", () => {
 
   it("is expected to display an index of morning pages", () => {
     cy.wait("@getMorningPages");
-    cy.get("[data-cy=morning-pages-list]").should("have.length", 3);
+    cy.get("[data-cy=morning-pages-list]").children().should("have.length", 3);
   });
 });

@@ -10,7 +10,9 @@ const Navigation = () => {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/morning_pages">Morning Pages</Link>
+            <Link data-cy="morning-pages-btn" to="/morning_pages">
+              Morning Pages
+            </Link>
           </li>
         </ul>
       </nav>
