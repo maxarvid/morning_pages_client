@@ -17,7 +17,7 @@ describe("When user view single morning page", () => {
 
   it("is expected to display the morning page with its body", () => {
     cy.wait("@getMorningPage");
-    cy.get("[data-cy=morning-page-body").should(
+    cy.get("[data-cy=morning-page-body]").should(
       "contain.text",
       "And this is the body"
     );

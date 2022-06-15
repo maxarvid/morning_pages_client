@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   morningPages: [],
+  morningPage: {},
 };
 
 export const morningPagesSlice = createSlice({
@@ -11,9 +12,12 @@ export const morningPagesSlice = createSlice({
     setMorningPages: (state, action) => {
       state.morningPages = action.payload;
     },
+    setMorningPage: (state, action) => {
+      state.morningPage = action.payload;
+    },
   },
 });
 
-export const { setMorningPages } = morningPagesSlice.actions;
+export const { setMorningPages, setMorningPage } = morningPagesSlice.actions;
 
 export default morningPagesSlice.reducer;

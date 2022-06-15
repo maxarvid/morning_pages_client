@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
+import { Link, Outlet } from "react-router-dom";
 import MorningPagesService from "../modules/MorningPagesService";
 
 const MorningPages = () => {
@@ -10,11 +11,23 @@ const MorningPages = () => {
   }, []);
 
   return (
-    <ul data-cy="morning-pages-list">
-      {morningPages.map((morningPage) => {
-        return <li key={morningPage.id}>{morningPage.title}</li>;
-      })}
-    </ul>
+    <div>
+      <Outlet />
+      <ul data-cy="morning-pages-list">
+        {morningPages.map((morningPage) => {
+          return (
+            <li key={morningPage.id}>
+              <Link
+                data-cy="morning-page"
+                to={`/morning_pages/${morningPage.id}`}
+              >
+                {morningPage.title}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 
