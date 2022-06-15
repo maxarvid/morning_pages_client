@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import MorningPagesService from "../modules/MorningPagesService";
+import ApiService from "../modules/ApiService";
 
 const MorningPage = () => {
   let { morningPageId } = useParams();
   const { morningPage } = useSelector((state) => state.morningPages);
 
   useEffect(() => {
-    MorningPagesService.show(morningPageId);
+    ApiService.show('morning_pages', morningPageId);
   }, []);
 
   return (

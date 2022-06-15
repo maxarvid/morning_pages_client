@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import ThemesService from "../modules/ThemesService";
+import ApiService from "../modules/ApiService";
 
 const Themes = () => {
   const { themes } = useSelector((state) => state.themes);
 
   useEffect(() => {
-    ThemesService.index();
+    ApiService.index('themes');
   }, []);
 
   return (
