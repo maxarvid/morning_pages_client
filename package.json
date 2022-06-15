@@ -35,7 +35,7 @@
     "cy:open": "cypress open --e2e -b  chrome",
     "cy:run": "cypress run",
     "cypress": "BROWSER=none start-test start:rewired :3000 cy:open",
-    "cypress:ci": "BROWSER=none start-test start:rewired :3000 cy:run"
+    "cypress:ci": "BROWSER=none CI=true start-test start:rewired :3000 cy:run"
   },
   "eslintConfig": {
     "extends": [

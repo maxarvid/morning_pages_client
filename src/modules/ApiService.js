@@ -12,10 +12,14 @@ const ApiService = {
       `${process.env.REACT_APP_API_URL}/${resource}`
     );
     switch (resource) {
-      case 'morning_pages':
+      case "morning_pages":
         store.dispatch(setMorningPages(data.morning_pages));
-      case 'themes':
+        break;
+      case "themes":
         store.dispatch(setThemes(data.themes));
+        break;
+      default:
+        break;
     }
   },
   async show(resource, id) {

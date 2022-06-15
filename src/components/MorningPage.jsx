@@ -9,7 +9,7 @@ const MorningPage = () => {
 
   useEffect(() => {
     ApiService.show('morning_pages', morningPageId);
-  }, []);
+  }, [morningPageId]);
 
   return (
     <div>
