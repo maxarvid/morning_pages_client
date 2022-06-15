@@ -1,5 +1,6 @@
 describe("When user navigates to their Morning Pages", () => {
   beforeEach(() => {
+    cy.intercept("GET", "**/themes", { fixture: "themesResponse.json" }); 
     cy.intercept("GET", "**/morning_pages", {
       fixture: "morningPagesIndex.json",
     }).as("getMorningPages");
