@@ -3,6 +3,7 @@ import MorningPagesService from "../modules/MorningPagesService";
 
 const NewMorningPageForm = () => {
   const newMorningPageForm = (event) => {
+    event.preventDefault()
     const morningPost = {
       title: event.target["title"].value,
       body: event.target["body"].value,

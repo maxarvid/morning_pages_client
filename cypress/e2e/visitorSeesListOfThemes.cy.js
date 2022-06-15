@@ -24,7 +24,7 @@ describe("When user visits application", () => {
     });
 
     it("is expected to render an error message", () => {
-      cy.get("[data-cy=error-handler]").should(
+      cy.get("[data-cy=toast-container]").should(
         "contain.text",
         "Something went wrong, try again later"
       );

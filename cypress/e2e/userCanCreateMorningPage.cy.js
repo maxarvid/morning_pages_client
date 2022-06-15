@@ -28,9 +28,26 @@ describe("When user creates a new morning page", () => {
     });
 
     it("is expected to respond with a message", () => {
-      cy.get("[data-cy=morning-page-toast]").should(
-        "containt.text",
-        "Your morning page was saved!"
+      cy.get("[data-cy=toast-container]").should(
+        "contain.text",
+        "The page was saved to the database"
+      );
+    });
+  });
+  describe("unsuccessfully", () => {
+    beforeEach(() => {
+      cy.intercept("POST", "**/morning_pages", {
+        statusCode: 422,
+      });
+      cy.get("[data-cy=morning-page-new-btn]").click();
+      cy.get("[data-cy=morning-page-title-input]").type("This is the title");
+      cy.get("[data-cy=morning-page-body-input]").type("this is the body");
+      cy.get("[data-cy=morning-page-submit-btn]").click();
+    });
+    it("is expected to render an error message", () => {
+      cy.get("[data-cy=toast-container]").should(
+        "contain.text",
+        "Something went wrong, try again later"
       );
     });
   });

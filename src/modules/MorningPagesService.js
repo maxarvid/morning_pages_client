@@ -1,4 +1,5 @@
 import axios from "axios";
+import { toast } from "react-toastify";
 import {
   setMorningPage,
   setMorningPages,
@@ -11,19 +12,23 @@ const MorningPagesService = {
       const { data } = await axios.get("/morning_pages");
       store.dispatch(setMorningPages(data.morning_pages));
     } catch (error) {
+      toast.error("Something went wrong, try again later");
     }
   },
   async show(id) {
     try {
-      const { data } = axios.get(`/morning_pages/${id}`);
+      const { data } = await axios.get(`/morning_pages/${id}`);
       store.dispatch(setMorningPage(data.morning_page));
     } catch (error) {
+      toast.error("Something went wrong, try again later");
     }
   },
   async create(props) {
     try {
-      const { response } = axios.post("/morning_pages", props);
+      const { data } = await axios.post("/morning_pages", props);
+      toast(data.message);
     } catch (error) {
+      toast.error("Something went wrong, try again later");
     }
   },
 };

@@ -5,6 +5,7 @@ import MorningPages from "./components/MorningPages";
 import NewMorningPageForm from "./components/NewMorningPageForm";
 import Navigation from "./components/Navigation";
 import Themes from "./components/Themes";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
@@ -17,6 +18,9 @@ const App = () => {
           <Route path="create" element={<NewMorningPageForm />} />
         </Route>
       </Routes>
+      <div data-cy="toast-container">
+        <ToastContainer />
+      </div>
     </div>
   );
 };
