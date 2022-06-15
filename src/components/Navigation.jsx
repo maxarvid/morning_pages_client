@@ -13,6 +13,13 @@ const Navigation = () => {
             Morning Pages
           </Link>
         </li>
+        <li>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <Link data-cy="morning-page-new-btn" to="morning_pages/create">
+          New Morning Page
+        </Link>
+      </button>
+        </li>
       </ul>
     </nav>
   );

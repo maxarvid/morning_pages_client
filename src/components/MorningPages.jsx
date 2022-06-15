@@ -7,11 +7,11 @@ const MorningPages = () => {
   const { morningPages } = useSelector((state) => state.morningPages);
 
   useEffect(() => {
-    ApiService.index('morning_pages');
+    ApiService.index("morning_pages");
   }, []);
 
   return (
-    <div>
+    <div className="fixed top-2 left-2 h-screen w-56 flex flex-col justify-center">
       <Outlet />
       <ul data-cy="morning-pages-list">
         {morningPages.map((morningPage) => {

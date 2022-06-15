@@ -9,6 +9,7 @@ describe("When user creates a new morning page", () => {
       .its("store")
       .invoke("dispatch", { type: "auth/setCurrentUser", payload: true });
     cy.get("[data-cy=morning-pages-btn]").click();
+    cy.wait("@getMorningPages");
   });
 
   describe("successfully", () => {
@@ -16,7 +17,7 @@ describe("When user creates a new morning page", () => {
       cy.intercept("POST", "**/morning_pages/**", {
         fixture: "morningPageCreate.json",
       }).as("morningPageCreate");
-      cy.get("[data-cy=morning-page-new-btn").click()
+      cy.get("[data-cy=morning-page-new-btn]").click();
       cy.get("[data-cy=morning-page-title-input]").type("This is the title");
       cy.get("[data-cy=morning-page-body-input]").type("this is the body");
       cy.get("[data-cy=morning-page-submit-btn]").click();
