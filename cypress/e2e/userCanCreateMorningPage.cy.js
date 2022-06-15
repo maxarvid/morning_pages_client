@@ -14,7 +14,7 @@ describe("When user creates a new morning page", () => {
 
   describe("successfully", () => {
     beforeEach(() => {
-      cy.intercept("POST", "**/morning_pages/**", {
+      cy.intercept("POST", "**/morning_pages", {
         fixture: "morningPageCreate.json",
       }).as("morningPageCreate");
       cy.get("[data-cy=morning-page-new-btn]").click();

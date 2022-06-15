@@ -1,18 +1,25 @@
 import React from "react";
-import ApiService from "../modules/ApiService";
+import MorningPagesService from "../modules/MorningPagesService";
 
 const NewMorningPageForm = () => {
-  const newMorningPageForm = () => {
-    debugger;
+  const newMorningPageForm = (event) => {
+    const morningPost = {
+      title: event.target["title"].value,
+      body: event.target["body"].value,
+    };
+    MorningPagesService.create(morningPost);
   };
 
   return (
     <div className="absolute bottom-50 left-50">
-      <form>
+      <form onSubmit={newMorningPageForm}>
         <label>Title</label>
-        <input data-cy="morning-page-title-input" type="text" />
+        <input data-cy="morning-page-title-input" type="text" id="title" />
         <label>Body</label>
-        <input type="text" />
+        <input data-cy="morning-page-body-input" type="text" id="body" />
+        <button data-cy="morning-page-submit-btn" type="submit">
+          Save
+        </button>
       </form>
     </div>
   );
