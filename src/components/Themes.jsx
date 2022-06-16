@@ -10,11 +10,11 @@ const Themes = () => {
   }, []);
 
   return (
-    <div className="fixed top-2 left-2 h-screen w-56 flex flex-col justify-center">
+    <div>
       <ul data-cy="themes-list">
         {themes.map((theme) => {
           return (
-            <li className="" key={theme.id}>
+            <li key={theme.id}>
               {theme.name}
             </li>
           );

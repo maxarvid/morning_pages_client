@@ -12,7 +12,7 @@ const NewMorningPageForm = () => {
   };
 
   return (
-    <div className="absolute bottom-50 left-50">
+    <div>
       <form onSubmit={newMorningPageForm}>
         <label>Title</label>
         <input data-cy="morning-page-title-input" type="text" id="title" />

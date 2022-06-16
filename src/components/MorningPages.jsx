@@ -11,7 +11,7 @@ const MorningPages = () => {
   }, []);
 
   return (
-    <div className="fixed top-2 left-2 h-screen w-56 flex flex-col justify-center">
+    <div>
       <Outlet />
       <ul data-cy="morning-pages-list">
         {morningPages.map((morningPage) => {

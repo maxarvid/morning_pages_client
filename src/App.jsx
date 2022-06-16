@@ -9,7 +9,7 @@ import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
-    <div className="flex">
+    <div>
       <Navigation />
       <Routes>
         <Route path="/" element={<Themes />} />
