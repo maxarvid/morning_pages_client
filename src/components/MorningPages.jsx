@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
-import ApiService from "../modules/ApiService";
+import MorningPagesService from "../modules/MorningPagesService";
 
 const MorningPages = () => {
   const { morningPages } = useSelector((state) => state.morningPages);
 
   useEffect(() => {
-    ApiService.index('morning_pages');
+    MorningPagesService.index();
   }, []);
 
   return (
-    <div>
+    <div className="fixed top-2 left-2 h-screen w-56 flex flex-col justify-center">
       <Outlet />
       <ul data-cy="morning-pages-list">
         {morningPages.map((morningPage) => {

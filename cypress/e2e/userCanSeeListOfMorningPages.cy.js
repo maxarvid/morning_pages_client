@@ -1,27 +1,35 @@
 describe("When user navigates to their Morning Pages", () => {
   beforeEach(() => {
-    cy.intercept("GET", "**/themes", { fixture: "themesResponse.json" });
-    cy.intercept("GET", "**/morning_pages", {
-      fixture: "morningPagesIndex.json",
-    }).as("getMorningPages");
-    cy.visit("/");
-    cy.window()
-      .its("store")
-      .invoke("dispatch", { type: "auth/setCurrentUser", payload: true });
-    cy.get("[data-cy=morning-pages-btn]").click();
+    cy.userVisit();
   });
 
-  it("is expected to store the current user status in application state", () => {
-    cy.window()
-      .its("store")
-      .invoke("getState")
-      .its("auth")
-      .its("currentUser")
-      .should("eq", true);
-  });
+  describe("successfully", () => {
+    beforeEach(() => {
+      cy.visitMorningPages();
+    });
 
-  it("is expected to display an index of morning pages", () => {
-    cy.wait("@getMorningPages");
-    cy.get("[data-cy=morning-pages-list]").children().should("have.length", 3);
+    it("is expected to display an index of morning pages", () => {
+      cy.morningPagesList().should("have.length", 3);
+    });
+
+    it("is expected to display the title of the first morning page", () => {
+      cy.morningPagesList().first().should("contain.text", "Awesome title");
+    });
+  });
+  
+  describe("unsuccessfully", () => {
+    beforeEach(() => {
+      cy.intercept("GET", "**/morning_pages", {
+        statusCode: 422,
+      });
+      cy.get("[data-cy=morning-pages-btn]").click();
+    });
+
+    it("is expected to render an error message", () => {
+      cy.get("[data-cy=toast-container]").should(
+        "contain.text",
+        "Something went wrong, try again later"
+      );
+    });
   });
 });
