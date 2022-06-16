@@ -1,14 +1,7 @@
 describe("When user view single morning page", () => {
   beforeEach(() => {
-    cy.intercept("GET", "**/themes", { fixture: "themesResponse.json" });
-    cy.intercept("GET", "**/morning_pages", {
-      fixture: "morningPagesIndex.json",
-    }).as("getMorningPages");
-    cy.visit("/");
-    cy.window()
-      .its("store")
-      .invoke("dispatch", { type: "auth/setCurrentUser", payload: true });
-    cy.get("[data-cy=morning-pages-btn]").click();
+    cy.userVisit();
+    cy.visitMorningPages();
   });
 
   describe("successfully", () => {
@@ -27,6 +20,7 @@ describe("When user view single morning page", () => {
       );
     });
   });
+  
   describe("unsuccessfully", () => {
     beforeEach(() => {
       cy.intercept("GET", "**/morning_pages/1", { statusCode: 422 });
