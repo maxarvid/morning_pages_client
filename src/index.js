@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import { store } from "./state/store";
-import "./index.css";
+import "semantic-ui-css/semantic.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 
