@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Link, Outlet } from "react-router-dom";
+import { List } from "semantic-ui-react";
 import MorningPagesService from "../modules/MorningPagesService";
 
 const MorningPages = () => {
@@ -11,22 +12,21 @@ const MorningPages = () => {
   }, []);
 
   return (
-    <div className="fixed top-2 left-2 h-screen w-56 flex flex-col justify-center">
+    <div>
       <Outlet />
-      <ul data-cy="morning-pages-list">
+      <List data-cy="morning-pages-list">
         {morningPages.map((morningPage) => {
           return (
-            <li key={morningPage.id}>
-              <Link
-                data-cy="morning-page"
-                to={`/morning_pages/${morningPage.id}`}
-              >
-                {morningPage.title}
-              </Link>
-            </li>
+            <List.Item
+              data-cy="morning-page"
+              key={morningPage.id}
+              as={Link}
+              to={`/morning_pages/${morningPage.id}`}
+              content={morningPage.title}
+            />
           );
         })}
-      </ul>
+      </List>
     </div>
   );
 };
