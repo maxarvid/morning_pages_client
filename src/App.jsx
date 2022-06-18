@@ -6,10 +6,11 @@ import NewMorningPageForm from "./components/NewMorningPageForm";
 import Navigation from "./components/Navigation";
 import Themes from "./components/Themes";
 import { ToastContainer } from "react-toastify";
+import { Container } from "semantic-ui-react";
 
 const App = () => {
   return (
-    <div>
+    <Container>
       <Navigation />
       <Routes>
         <Route path="/" element={<Themes />} />
@@ -21,7 +22,7 @@ const App = () => {
       <div data-cy="toast-container">
         <ToastContainer />
       </div>
-    </div>
+    </Container>
   );
 };
 
