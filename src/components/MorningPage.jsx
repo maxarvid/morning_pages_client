@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { Segment } from "semantic-ui-react";
 import MorningPagesService from "../modules/MorningPagesService";
 
 const MorningPage = () => {
@@ -12,10 +13,10 @@ const MorningPage = () => {
   }, [morningPageId]);
 
   return (
-    <div>
+    <Segment>
       <h3>{morningPage.title}</h3>
       <p data-cy="morning-page-body">{morningPage.body}</p>
-    </div>
+    </Segment>
   );
 };
 

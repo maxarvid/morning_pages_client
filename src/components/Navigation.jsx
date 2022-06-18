@@ -14,7 +14,7 @@ const Navigation = () => {
         content="Home"
         as={Link}
         to="/"
-      ></Menu.Item>
+      />
       <Menu.Item
         data-cy="morning-pages-btn"
         name="morningPages"
@@ -23,7 +23,7 @@ const Navigation = () => {
         content="Morning Pages"
         as={Link}
         to="/morning_pages"
-      ></Menu.Item>
+      />
       <Menu.Item
         data-cy="morning-page-new-btn"
         name="createMorningPage"
@@ -32,7 +32,7 @@ const Navigation = () => {
         content="New Morning Page"
         as={Link}
         to="morning_pages/create"
-      ></Menu.Item>
+      />
     </Menu>
   );
 };
