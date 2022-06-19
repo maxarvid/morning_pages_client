@@ -8,7 +8,7 @@ import Themes from "./components/Themes";
 import { ToastContainer } from "react-toastify";
 import { Container } from "semantic-ui-react";
 import { useSelector } from "react-redux";
-import WelcomePage from "./components/WelcomePage";
+import Welcome from "./components/Welcome";
 
 const App = () => {
   const { currentUser } = useSelector((state) => state.auth);
@@ -25,7 +25,7 @@ const App = () => {
           </Route>
         </Routes>
       ) : (
-        <WelcomePage />
+        <Welcome />
       )}
       <div data-cy="toast-container">
         <ToastContainer />
