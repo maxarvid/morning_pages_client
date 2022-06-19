@@ -12,9 +12,24 @@ const auth = new JtockAuth({
 const Authentication = {
   async signIn(data) {
     try {
-      let response = await auth.signIn(data.email.value, data.password.value);
+      let response = await auth.signIn(data.email, data.password);
       toast.success("You are now signed in", {
-        onClose: () => {
+        onOpen: () => {
+          store.dispatch(setCurrentUser(response.data));
+        },
+      });
+    } catch (error) {
+      toast.error(error.response.data.errors[0]);
+    }
+  },
+  async signUp(data) {
+    try {
+      let response = await auth.signUp({
+        email: data.email,
+        password: data.password,
+      });
+      toast.success("You have successfully created your account", {
+        onOpen: () => {
           store.dispatch(setCurrentUser(response.data));
         },
       });
