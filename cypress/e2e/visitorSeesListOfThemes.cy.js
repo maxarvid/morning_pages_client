@@ -1,7 +1,7 @@
 describe("When user visits application", () => {
   describe("sucessfully", () => {
     beforeEach(() => {
-      cy.visitThemes();
+      cy.userVisit();
     });
 
     it("is expected to display a list of themes", () => {
@@ -17,6 +17,9 @@ describe("When user visits application", () => {
     beforeEach(() => {
       cy.intercept("GET", "**/themes", { statusCode: 422 });
       cy.visit("/");
+      cy.window()
+        .its("store")
+        .invoke("dispatch", { type: "auth/setCurrentUser", payload: true });
     });
 
     it("is expected to render an error message", () => {

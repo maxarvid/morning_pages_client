@@ -7,18 +7,26 @@ import Navigation from "./components/Navigation";
 import Themes from "./components/Themes";
 import { ToastContainer } from "react-toastify";
 import { Container } from "semantic-ui-react";
+import { useSelector } from "react-redux";
+import WelcomePage from "./components/WelcomePage";
 
 const App = () => {
+  const { currentUser } = useSelector((state) => state.auth);
+
   return (
     <Container>
       <Navigation />
-      <Routes>
-        <Route path="/" element={<Themes />} />
-        <Route path="/morning_pages" element={<MorningPages />}>
-          <Route path=":morningPageId" element={<MorningPage />} />
-          <Route path="create" element={<NewMorningPageForm />} />
-        </Route>
-      </Routes>
+      {currentUser ? (
+        <Routes>
+          <Route path="/" element={<Themes />} />
+          <Route path="/morning_pages" element={<MorningPages />}>
+            <Route path=":morningPageId" element={<MorningPage />} />
+            <Route path="create" element={<NewMorningPageForm />} />
+          </Route>
+        </Routes>
+      ) : (
+        <WelcomePage />
+      )}
       <div data-cy="toast-container">
         <ToastContainer />
       </div>
