@@ -3,7 +3,7 @@ import { Grid } from "semantic-ui-react";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-const WelcomePage = () => {
+const Welcome = () => {
   return (
     <>
       <div data-cy="welcome">Welcome to Morning Pages</div>
@@ -19,4 +19,4 @@ const WelcomePage = () => {
   );
 };
 
-export default WelcomePage;
+export default Welcome;

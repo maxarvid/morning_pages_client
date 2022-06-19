@@ -7,10 +7,7 @@ describe("When user creates an account", () => {
 
   describe("successfully", () => {
     beforeEach(() => {
-      cy.get("[data-cy=create-account-email]").type("user@email.com");
-      cy.get("[data-cy=create-account-password]").type("password");
-      cy.get("[data-cy=create-account-password-confirm]").type("password");
-      cy.get("[data-cy=create-account-submit-btn]").click();
+      cy.signUp();
     });
 
     it("is expected to display a message", () => {
@@ -31,11 +28,9 @@ describe("When user creates an account", () => {
         fixture: "signInFailure.json",
         statusCode: 422,
       });
-      cy.get("[data-cy=create-account-email]").type("user@email.com");
-      cy.get("[data-cy=create-account-password]").type("password");
-      cy.get("[data-cy=create-account-password-confirm]").type("password");
-      cy.get("[data-cy=create-account-submit-btn]").click();
+      cy.signUp();
     });
+    
     it("is expected to display an error message", () => {
       cy.get("[data-cy=toast-container]").should(
         "contain.text",
