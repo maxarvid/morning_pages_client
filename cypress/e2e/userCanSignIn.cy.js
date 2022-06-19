@@ -1,9 +1,5 @@
 describe("When user signs in", () => {
   beforeEach(() => {
-    cy.intercept("POST", "**/auth/sign_in", { fixture: "signInResponse.json" });
-    cy.intercept("GET", "**/auth/validate_token", {
-      fixture: "signInResponse.json",
-    });
     cy.visitThemes();
   });
 
@@ -16,9 +12,8 @@ describe("When user signs in", () => {
 
   describe("successfully", () => {
     beforeEach(() => {
-      cy.get("[data-cy=login-email]").type("user@email.com");
-      cy.get("[data-cy=login-password]").type("password");
-      cy.get("[data-cy=login-submit-btn]").click();
+      cy.signInIntercept();
+      cy.signIn();
     });
     it("is expected to inform the user they have signed in", () => {
       cy.get("[data-cy=toast-container]").should(
@@ -34,18 +29,8 @@ describe("When user signs in", () => {
 
   describe("unsuccessfully", () => {
     beforeEach(() => {
-      cy.intercept("POST", "**/auth/sign_in", {
-        statusCode: 401,
-        fixture: "signInFailure.json",
-      });
-      cy.intercept("GET", "**/auth/validate_token**", {
-        statusCode: 401,
-        fixture: "signInFailure.json",
-      });
-
-      cy.get("[data-cy=login-email]").type("user@email.com");
-      cy.get("[data-cy=login-password]").type("wrong password");
-      cy.get("[data-cy=login-submit-btn]").click();
+      cy.signInFailureIntercept();
+      cy.signIn();
     });
     it("is expected to display an error message", () => {
       cy.get("[data-cy=toast-container").should(
