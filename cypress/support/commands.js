@@ -60,6 +60,5 @@ Cypress.Commands.add("signIn", () => {
 Cypress.Commands.add("signUp", () => {
   cy.get("[data-cy=create-account-email]").type("user@email.com");
   cy.get("[data-cy=create-account-password]").type("password");
-  cy.get("[data-cy=create-account-password-confirm]").type("password");
   cy.get("[data-cy=create-account-submit-btn]").click();
 });

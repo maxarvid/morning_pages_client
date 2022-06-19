@@ -21,12 +21,6 @@ const SignUp = () => {
         type="password"
         id="password"
       />
-      <Form.Input
-        data-cy="create-account-password-confirm"
-        label="Confirm Password"
-        type="password"
-        id="password-confirm"
-      />
       <Form.Button data-cy="create-account-submit-btn" content="Submit" />
     </Form>
   );
