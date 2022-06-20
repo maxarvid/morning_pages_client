@@ -28,14 +28,14 @@ describe("When authenticating, before the server responds", () => {
         statusCode: 401,
         fixture: "signInFailure.json",
         delay: 4000,
-      }).as("signIn");
+      }).as("signInFailure");
       cy.intercept("GET", "**/auth/validate_token**", {
         statusCode: 401,
         fixture: "signInFailure.json",
         delay: 2000,
       });
       cy.signIn();
-      cy.wait("@signIn");
+      cy.wait("@signInFailure");
     });
 
     it("is expected to display a loader while logging user in", () => {
