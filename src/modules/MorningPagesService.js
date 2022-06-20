@@ -25,7 +25,7 @@ const MorningPagesService = {
   },
   async create(props) {
     try {
-      const { data } = await axios.post("/morning_pages", props);
+      const { data } = await axios.post(`themes/${props.themeId}/morning_pages`, props);
       toast(data.message);
     } catch (error) {
       toast.error("Something went wrong, try again later");
