@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form } from "semantic-ui-react";
 import MorningPagesService from "../modules/MorningPagesService";
 import NewMorningPageFormDropdown from "./NewMorningPageFormDropdown";
+import NewMorningPageFormTextInputs from "./NewMorningPageFormTextInputs";
 
 const NewMorningPageForm = () => {
   const [selectedTheme, setSelectedTheme] = useState("");
@@ -18,18 +19,7 @@ const NewMorningPageForm = () => {
 
   return (
     <Form onSubmit={newMorningPageForm}>
-      <Form.Input
-        label="Title"
-        data-cy="morning-page-title-input"
-        type="text"
-        id="title"
-      />
-      <Form.Input
-        label="Body"
-        data-cy="morning-page-body-input"
-        type="text"
-        id="body"
-      />
+      <NewMorningPageFormTextInputs />
       <NewMorningPageFormDropdown
         selectedTheme={selectedTheme}
         onChange={(event, data) => setSelectedTheme(data.value)}
