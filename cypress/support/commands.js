@@ -36,7 +36,9 @@ Cypress.Commands.add("createMorningPage", () => {
 });
 
 Cypress.Commands.add("signInIntercept", () => {
-  cy.intercept("POST", "**/auth/sign_in", { fixture: "signInResponse.json" });
+  cy.intercept("POST", "**/auth/sign_in", {
+    fixture: "signInResponse.json",
+  });
   cy.intercept("GET", "**/auth/validate_token", {
     fixture: "signInResponse.json",
   });
