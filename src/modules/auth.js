@@ -22,7 +22,7 @@ const Authentication = {
         },
       });
     } catch (error) {
-      let errorMessage = error.response.data.errors[0]
+      let errorMessage = error?.response?.data?.errors[0]
         ? error.response.data.errors[0]
         : "Something went wrong";
       toast.error(errorMessage, {
@@ -46,11 +46,9 @@ const Authentication = {
         },
       });
     } catch (error) {
-      debugger
       let errorMessage = error.response.data.errors[0]
       ? error.response.data.errors[0]
       : "Something went wrong";
-      debugger
       toast.error(errorMessage, {
         onOpen: () => {
           store.dispatch(setLoading(false));
