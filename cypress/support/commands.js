@@ -30,6 +30,8 @@ Cypress.Commands.add("createMorningPage", () => {
   cy.get("[data-cy=morning-page-new-btn]").click();
   cy.get("[data-cy=morning-page-title-input]").type("This is the title");
   cy.get("[data-cy=morning-page-body-input]").type("this is the body");
+  cy.get("[data-cy=morning-page-dropdown").click();
+  cy.get("[data-cy=morning-page-dropdown").children().last().click();
   cy.get("[data-cy=morning-page-submit-btn]").click();
 });
 
