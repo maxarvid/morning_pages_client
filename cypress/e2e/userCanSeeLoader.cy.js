@@ -13,9 +13,8 @@ describe("When authenticating, before the server responds", () => {
     });
 
     it("is expected to display a loader while logging user in", () => {
-      cy.wait("@signIn").then(() => {
-        cy.get("[data-cy=loader-container]").should("contain.text", "Loading");
-      });
+      cy.wait("@signIn");
+      cy.get("[data-cy=loader-container]").should("contain.text", "Loading");
     });
   });
 
@@ -30,9 +29,8 @@ describe("When authenticating, before the server responds", () => {
     });
 
     it("is expected to display a loader while logging user in", () => {
-      cy.wait("@signInFailure").then(() => {
-        cy.get("[data-cy=loader-container]").should("contain.text", "Loading");
-      });
+      cy.wait("@signInFailure");
+      cy.get("[data-cy=loader-container]").should("contain.text", "Loading");
     });
   });
 });
