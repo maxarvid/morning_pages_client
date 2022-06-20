@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
 import { Button, Form } from "semantic-ui-react";
 import MorningPagesService from "../modules/MorningPagesService";
+import NewMorningPageFormDropdown from "./NewMorningPageFormDropdown";
 
 const NewMorningPageForm = () => {
-  const { themes } = useSelector((state) => state.themes);
   const [selectedTheme, setSelectedTheme] = useState("");
 
   const newMorningPageForm = (event, data) => {
@@ -16,10 +15,6 @@ const NewMorningPageForm = () => {
     };
     MorningPagesService.create(morningPost);
   };
-
-  const themeOptions = themes.map((theme) => {
-    return { key: theme.id, text: theme.name, value: theme.id };
-  });
 
   return (
     <Form onSubmit={newMorningPageForm}>
@@ -35,12 +30,8 @@ const NewMorningPageForm = () => {
         type="text"
         id="body"
       />
-      <Form.Dropdown
-        selection
-        data-cy="morning-page-dropdown"
-        options={themeOptions}
-        placeholder="Choose a theme"
-        value={selectedTheme}
+      <NewMorningPageFormDropdown
+        selectedTheme={selectedTheme}
         onChange={(event, data) => setSelectedTheme(data.value)}
       />
       <Button data-cy="morning-page-submit-btn" type="submit" content="Save" />
