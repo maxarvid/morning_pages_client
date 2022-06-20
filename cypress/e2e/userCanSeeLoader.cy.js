@@ -19,12 +19,12 @@ describe("When authenticating, before the server responds", () => {
       cy.intercept("POST", "**/auth/sign_in", {
         statusCode: 401,
         fixture: "signInFailure.json",
-        delay: 500,
+        delay: 2000,
       });
       cy.intercept("GET", "**/auth/validate_token**", {
         statusCode: 401,
         fixture: "signInFailure.json",
-        delay: 500,
+        delay: 2000,
       });
     });
 
