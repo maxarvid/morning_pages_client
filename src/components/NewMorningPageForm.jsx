@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Button, Form, Select } from "semantic-ui-react";
+import { Button, Form } from "semantic-ui-react";
 import MorningPagesService from "../modules/MorningPagesService";
 
 const NewMorningPageForm = () => {
@@ -35,8 +35,8 @@ const NewMorningPageForm = () => {
         type="text"
         id="body"
       />
-      <Form.Input
-        as={Select}
+      <Form.Dropdown
+        selection
         data-cy="morning-page-dropdown"
         options={themeOptions}
         placeholder="Choose a theme"
