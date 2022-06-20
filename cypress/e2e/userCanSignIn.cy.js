@@ -15,6 +15,7 @@ describe("When user signs in", () => {
       cy.signInIntercept();
       cy.signIn();
     });
+
     it("is expected to inform the user they have signed in", () => {
       cy.get("[data-cy=toast-container]").should(
         "contain.text",
