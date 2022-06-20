@@ -46,7 +46,10 @@ const Authentication = {
         },
       });
     } catch (error) {
-      toast.error(error.response.data.errors[0], {
+      let errorMessage = error.response
+        ? error.response.data.errors[0]
+        : "Something went wrong";
+      toast.error(errorMessage, {
         onOpen: () => {
           store.dispatch(setLoading(false));
         },
