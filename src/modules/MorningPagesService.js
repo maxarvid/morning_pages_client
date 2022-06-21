@@ -40,6 +40,16 @@ const MorningPagesService = {
       toast.error("Something went wrong, try again later");
     }
   },
+  async delete(id) {
+    try {
+      const response = await axios.delete(`/morning_pages/${id}`, {
+        headers: this.headers,
+      });
+      toast(`${response.data.morning_page.title} has been deleted`);
+    } catch (error) {
+      toast.error("Something went wrong, try again later");
+    }
+  },
 };
 
 export default MorningPagesService;
