@@ -7,16 +7,11 @@ import {
 import { store } from "../state/store";
 
 const MorningPagesService = {
-  async getHeaders() {
-    const headers = await JSON.parse(
-      localStorage.getItem("J-tockAuth-Storage")
-    );
-    return headers;
-  },
+  headers: JSON.parse(window.localStorage.getItem("J-tockAuth-Storage")),
   async index() {
     try {
       const { data } = await axios.get("/morning_pages", {
-        headers: this.getHeaders(),
+        headers: this.headers,
       });
       store.dispatch(setMorningPages(data.morning_pages));
     } catch (error) {
@@ -26,7 +21,7 @@ const MorningPagesService = {
   async show(id) {
     try {
       const { data } = await axios.get(`/morning_pages/${id}`, {
-        headers: this.getHeaders(),
+        headers: this.headers,
       });
       store.dispatch(setMorningPage(data.morning_page));
     } catch (error) {
@@ -38,7 +33,7 @@ const MorningPagesService = {
       const { data } = await axios.post(
         `themes/${props.themeId}/morning_pages`,
         props,
-        { headers: this.getHeaders }
+        { headers: this.headers }
       );
       toast(data.message);
     } catch (error) {
