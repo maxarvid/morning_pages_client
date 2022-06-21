@@ -56,6 +56,14 @@ const Authentication = {
       });
     }
   },
+  async validateToken(token) {
+    try {
+      let response = await auth.validateToken(token);
+      store.dispatch(setCurrentUser(response.data));
+    } catch (error) {
+      store.dispatch(setCurrentUser(false));
+    }
+  },
 };
 
 export default Authentication;

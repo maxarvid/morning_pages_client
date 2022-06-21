@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import MorningPage from "./components/MorningPage";
 import MorningPages from "./components/MorningPages";
@@ -9,9 +9,19 @@ import { ToastContainer } from "react-toastify";
 import { Container } from "semantic-ui-react";
 import { useSelector } from "react-redux";
 import Welcome from "./components/Welcome";
+import Authentication from "./modules/auth";
 
 const App = () => {
   const { currentUser } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    const token = JSON.parse(window.localStorage.getItem("J-tockAuth-Storage"));
+    token && Authentication.validateToken(token);
+    // if (token) {
+    //   debugger;
+    //   Authentication.validateToken(token)
+    // }
+  }, []);
 
   return (
     <Container>
