@@ -40,6 +40,17 @@ const MorningPagesService = {
       toast.error("Something went wrong, try again later");
     }
   },
+  async update(id, morningPage) {
+    try {
+      const { data } = await axios.put(`/morning_pages/${id}`, morningPage, {
+        headers: this.headers,
+      });
+      toast(data.message);
+      store.dispatch(setMorningPage(data.morning_page));
+    } catch (error) {
+      toast.error("Something went wrong, try again later");
+    }
+  },
   async delete(id) {
     try {
       const response = await axios.delete(`/morning_pages/${id}`, {

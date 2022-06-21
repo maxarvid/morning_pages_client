@@ -5,7 +5,7 @@ import Authentication from "./modules/auth";
 import Welcome from "./components/Welcome";
 import MorningPage from "./components/MorningPage";
 import MorningPages from "./components/MorningPages";
-import NewMorningPageForm from "./components/NewMorningPageForm";
+import MorningPageForm from "./components/MorningPageForm";
 import Navigation from "./components/Navigation";
 import Themes from "./components/Themes";
 import { ToastContainer } from "react-toastify";
@@ -26,8 +26,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Themes />} />
           <Route path="/morning_pages" element={<MorningPages />}>
-            <Route path=":morningPageId" element={<MorningPage />} />
-            <Route path="create" element={<NewMorningPageForm />} />
+            <Route path=":morningPageId" element={<MorningPage />}>
+              <Route path="update" element={<MorningPageForm />} />
+            </Route>
+            <Route path="create" element={<MorningPageForm />} />
           </Route>
         </Routes>
       ) : (

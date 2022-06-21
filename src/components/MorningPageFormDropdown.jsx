@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Form } from "semantic-ui-react";
 
-const NewMorningPageFormDropdown = ({ selectedTheme, onChange }) => {
+const MorningPageFormDropdown = ({ selectedTheme, onChange }) => {
   const { themes } = useSelector((state) => state.themes);
 
   const themeOptions = themes.map((theme) => {
@@ -21,4 +21,4 @@ const NewMorningPageFormDropdown = ({ selectedTheme, onChange }) => {
   );
 };
 
-export default NewMorningPageFormDropdown;
+export default MorningPageFormDropdown;
