@@ -56,12 +56,15 @@ const Authentication = {
       });
     }
   },
-  async validateToken(token) {
-    try {
-      let response = await auth.validateToken(token);
-      store.dispatch(setCurrentUser(response.data));
-    } catch (error) {
-      store.dispatch(setCurrentUser(false));
+  async validateToken() {
+    const token = JSON.parse(window.localStorage.getItem("J-tockAuth-Storage"));
+    if (token) {
+      try {
+        let response = await auth.validateToken(token);
+        store.dispatch(setCurrentUser(response.data));
+      } catch (error) {
+        store.dispatch(setCurrentUser(false));
+      }
     }
   },
 };

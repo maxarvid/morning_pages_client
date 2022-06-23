@@ -1,6 +1,7 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import {
+  setEditMode,
   setMorningPage,
   setMorningPages,
 } from "../state/features/morningPagesSlice";
@@ -36,6 +37,18 @@ const MorningPagesService = {
         { headers: this.headers }
       );
       toast(data.message);
+    } catch (error) {
+      toast.error("Something went wrong, try again later");
+    }
+  },
+  async update(id, morningPage) {
+    try {
+      const { data } = await axios.put(`/morning_pages/${id}`, morningPage, {
+        headers: this.headers,
+      });
+      toast(data.message);
+      store.dispatch(setMorningPage(data.morning_page));
+      store.dispatch(setEditMode(false));
     } catch (error) {
       toast.error("Something went wrong, try again later");
     }

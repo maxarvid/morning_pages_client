@@ -1,0 +1,8 @@
+{
+  "message": "This is the updated title has been updated",
+  "morning_page": {
+    "id": 1,
+    "title": "This is the updated title",
+    "body": "And this is the updated body"
+  }
+}

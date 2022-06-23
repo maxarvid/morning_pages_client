@@ -66,3 +66,10 @@ Cypress.Commands.add("signUp", () => {
   cy.get("[data-cy=create-account-password]").type("password");
   cy.get("[data-cy=create-account-submit-btn]").click();
 });
+
+Cypress.Commands.add("viewMorningPage", () => {
+  cy.intercept("GET", "**/morning_pages/1", {
+    fixture: "morningPageShow.json",
+  }).as("getMorningPage");
+  cy.get("[data-cy=morning-page]").first().click();
+});

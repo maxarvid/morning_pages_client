@@ -6,10 +6,7 @@ describe("When user view single morning page", () => {
 
   describe("successfully", () => {
     beforeEach(() => {
-      cy.intercept("GET", "**/morning_pages/1", {
-        fixture: "morningPageShow.json",
-      }).as("getMorningPage");
-      cy.get("[data-cy=morning-page]").first().click();
+      cy.viewMorningPage();
     });
 
     it("is expected to display the morning page with its body", () => {
@@ -20,7 +17,7 @@ describe("When user view single morning page", () => {
       );
     });
   });
-  
+
   describe("unsuccessfully", () => {
     beforeEach(() => {
       cy.intercept("GET", "**/morning_pages/1", { statusCode: 422 });
