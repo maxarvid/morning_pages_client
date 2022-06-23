@@ -12,7 +12,7 @@ const MorningPages = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Outlet />
       <List data-cy="morning-pages-list">
         {morningPages.map((morningPage) => {
@@ -27,7 +27,7 @@ const MorningPages = () => {
           );
         })}
       </List>
-    </div>
+    </>
   );
 };
 

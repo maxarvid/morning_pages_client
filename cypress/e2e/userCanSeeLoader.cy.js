@@ -9,10 +9,11 @@ describe("When authenticating, before the server responds", () => {
       return new Cypress.Promise((resolve) => {
         resolveReq = resolve;
       }).then(req.reply);
-    }).as("signIn");
+    })
     cy.signIn();
     cy.get("[data-cy=loader-container]")
       .should("contain.text", "Loading")
       .then(() => resolveReq());
+    cy.get("[data-cy=loader-container").should("not.exist");
   });
 });
