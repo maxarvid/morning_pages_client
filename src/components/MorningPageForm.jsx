@@ -19,7 +19,7 @@ const MorningPageForm = () => {
       setSelectedTheme(morningPage.theme_id);
       setTextInputs({ title: morningPage.title, body: morningPage.body });
     }
-  }, []);
+  }, [editMode, morningPage]);
 
   const MorningPageForm = (event, data) => {
     event.preventDefault();
