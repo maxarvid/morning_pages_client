@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import MorningPagesService from "../modules/MorningPagesService";
 import MorningPageFormDropdown from "./MorningPageFormDropdown";
 import MorningPageFormTextInputs from "./MorningPageFormTextInputs";
 import { Button, Form } from "semantic-ui-react";
-import { setEditMode } from "../state/features/morningPagesSlice";
-import { store } from "../state/store";
 
 const MorningPageForm = () => {
   const { editMode, morningPage, selectedTheme } = useSelector(
@@ -24,7 +22,6 @@ const MorningPageForm = () => {
     if (editMode) {
       MorningPagesService.update(morningPage.id, morningPost);
       navigate(`/morning_pages/${morningPage.id}`, { replace: true });
-      store.dispatch(setEditMode(false));
     } else {
       MorningPagesService.create(morningPost);
     }

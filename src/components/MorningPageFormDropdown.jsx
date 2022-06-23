@@ -4,7 +4,7 @@ import { Form } from "semantic-ui-react";
 import { setSelectedTheme } from "../state/features/morningPagesSlice";
 import { store } from "../state/store";
 
-const MorningPageFormDropdown = ({ onChange }) => {
+const MorningPageFormDropdown = () => {
   const { themes } = useSelector((state) => state.themes);
   const { editMode, morningPage, selectedTheme } = useSelector(
     (state) => state.morningPages
