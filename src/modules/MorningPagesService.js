@@ -43,9 +43,13 @@ const MorningPagesService = {
   },
   async update(id, morningPage) {
     try {
-      const { data } = await axios.put(`/morning_pages/${id}`, morningPage, {
-        headers: this.headers,
-      });
+      const { data } = await axios.put(
+        `themes/${morningPage.themeId}/morning_pages/${id}`,
+        morningPage,
+        {
+          headers: this.headers,
+        }
+      );
       toast(data.message);
       store.dispatch(setMorningPage(data.morning_page));
       store.dispatch(setEditMode(false));
