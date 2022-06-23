@@ -15,8 +15,7 @@ const App = () => {
   const { currentUser } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    const token = JSON.parse(window.localStorage.getItem("J-tockAuth-Storage"));
-    token && Authentication.validateToken(token);
+    Authentication.validateToken();
   }, []);
 
   return (
