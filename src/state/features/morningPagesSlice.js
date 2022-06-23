@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   morningPages: [],
   morningPage: {},
-  editMode: false
+  editMode: false,
+  selectedTheme: null,
 };
 
 export const morningPagesSlice = createSlice({
@@ -17,11 +18,19 @@ export const morningPagesSlice = createSlice({
       state.morningPage = action.payload;
     },
     setEditMode: (state, action) => {
-      state.editMode = action.payload; 
-    }
+      state.editMode = action.payload;
+    },
+    setSelectedTheme: (state, action) => {
+      state.selectedTheme = action.payload;
+    },
   },
 });
 
-export const { setMorningPages, setMorningPage, setEditMode } = morningPagesSlice.actions;
+export const {
+  setMorningPages,
+  setMorningPage,
+  setEditMode,
+  setSelectedTheme,
+} = morningPagesSlice.actions;
 
 export default morningPagesSlice.reducer;

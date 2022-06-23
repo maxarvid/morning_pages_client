@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import MorningPagesService from "../modules/MorningPagesService";
@@ -9,17 +9,10 @@ import { setEditMode } from "../state/features/morningPagesSlice";
 import { store } from "../state/store";
 
 const MorningPageForm = () => {
-  const [selectedTheme, setSelectedTheme] = useState("");
-  const [textInputs, setTextInputs] = useState({});
-  const { editMode, morningPage } = useSelector((state) => state.morningPages);
+  const { editMode, morningPage, selectedTheme } = useSelector(
+    (state) => state.morningPages
+  );
   let navigate = useNavigate();
-
-  useEffect(() => {
-    if (editMode) {
-      setSelectedTheme(morningPage.theme_id);
-      setTextInputs({ title: morningPage.title, body: morningPage.body });
-    }
-  }, [editMode, morningPage]);
 
   const MorningPageForm = (event, data) => {
     event.preventDefault();
@@ -39,11 +32,8 @@ const MorningPageForm = () => {
 
   return (
     <Form onSubmit={MorningPageForm}>
-      <MorningPageFormTextInputs textInputs={textInputs} />
-      <MorningPageFormDropdown
-        selectedTheme={selectedTheme}
-        onChange={(event, data) => setSelectedTheme(data.value)}
-      />
+      <MorningPageFormTextInputs />
+      <MorningPageFormDropdown />
       <Button data-cy="morning-page-submit-btn" type="submit" content="Save" />
     </Form>
   );
