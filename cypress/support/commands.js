@@ -9,6 +9,9 @@ Cypress.Commands.add("themesList", () => {
 
 Cypress.Commands.add("userVisit", () => {
   cy.intercept("GET", "**/themes", { fixture: "themesResponse.json" });
+  cy.intercept("GET", "**/validate_token**", {
+    fixture: "validateTokenResponse.json",
+  });
   cy.visit("/", {
     onBeforeLoad: function (window) {
       window.localStorage.setItem(
