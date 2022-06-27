@@ -8,7 +8,18 @@ Cypress.Commands.add("themesList", () => {
 });
 
 Cypress.Commands.add("userVisit", () => {
-  cy.visitThemes();
+  cy.intercept("GET", "**/themes", { fixture: "themesResponse.json" });
+  cy.intercept("GET", "**/validate_token**", {
+    fixture: "validateTokenResponse.json",
+  });
+  cy.visit("/", {
+    onBeforeLoad: function (window) {
+      window.localStorage.setItem(
+        "J-tockAuth-Storage",
+        '{"access-token":"ksJp_n5Y-u5TdRwB9E5eoQ","cache-control":"max-age=0, private, must-revalidate","client":"wuQhMVFTbPt12PvuHoxSIQ","content-type":"application/json; charset=utf-8","expiry":"1657213753","token-type":"Bearer","uid":"user@email.com"}'
+      );
+    },
+  });
   cy.window()
     .its("store")
     .invoke("dispatch", { type: "auth/setCurrentUser", payload: true });
