@@ -42,7 +42,7 @@ describe("When navigating the application", () => {
 
   describe("as a visitor", () => {
     it("is expected NOT to display a link to create a new morning page", () => {
-      cy.get("[data-cy=morning-page-new-btn]").should("not.be.visible");
+      cy.get("[data-cy=morning-page-new-btn]").should("not.be.exist");
     });
 
     it("is expected to redirect visitor to login screen when trying to navigate to create a new morning page", () => {
