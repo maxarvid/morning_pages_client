@@ -1,7 +1,8 @@
 describe("When user visits application", () => {
-  describe("sucessfully", () => {
+  describe("successfully", () => {
     beforeEach(() => {
       cy.userVisit();
+      cy.wait("@getThemes");
     });
 
     it("is expected to display a list of themes", () => {
