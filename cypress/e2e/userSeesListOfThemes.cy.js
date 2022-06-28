@@ -1,7 +1,10 @@
 describe("When user visits application", () => {
   describe("successfully", () => {
     beforeEach(() => {
-      cy.userVisit();
+      cy.interceptValidateToken();
+      cy.interceptThemes();
+      cy.visitApplicationWithToken();
+      cy.setUserInApplicationState();
       cy.wait("@getThemes");
     });
 
@@ -16,11 +19,13 @@ describe("When user visits application", () => {
 
   describe("unsuccessfully", () => {
     beforeEach(() => {
-      cy.intercept("GET", "**/themes", { statusCode: 422 });
-      cy.visit("/");
-      cy.window()
-        .its("store")
-        .invoke("dispatch", { type: "auth/setCurrentUser", payload: true });
+      cy.interceptValidateToken();
+      cy.intercept("GET", "**/themes", { statusCode: 422 }).as(
+        "getThemesError"
+      );
+      cy.visitApplicationWithToken();
+      cy.setUserInApplicationState();
+      cy.wait("@getThemesError");
     });
 
     it("is expected to render an error message", () => {
