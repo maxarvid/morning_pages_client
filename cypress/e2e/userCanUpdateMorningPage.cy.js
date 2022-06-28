@@ -1,6 +1,9 @@
 describe("When user updates a morning page", () => {
   beforeEach(() => {
-    cy.userVisit();
+    cy.interceptValidateToken();
+    cy.interceptThemes();
+    cy.visitApplicationWithToken();
+    cy.setUserInApplicationState();
     cy.visitMorningPages();
     cy.viewMorningPage();
   });
