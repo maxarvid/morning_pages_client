@@ -8,6 +8,7 @@ import MorningPageForm from "./components/MorningPageForm";
 import Navigation from "./components/Navigation";
 import Themes from "./components/Themes";
 import ProtectedRoute from "./components/ProtectedRoute";
+import MorningPagesList from "./components/MorningPagesList";
 import { ToastContainer } from "react-toastify";
 import { Container } from "semantic-ui-react";
 
@@ -24,10 +25,11 @@ const App = () => {
         <Route element={<ProtectedRoute />}>
           <Route path="/" element={<Themes />} />
           <Route path="/morning_pages" element={<MorningPages />}>
+            <Route path="" element={<MorningPagesList />} />
+            <Route path="create" element={<MorningPageForm />} />
             <Route path=":morningPageId" element={<MorningPage />}>
               <Route path="update" element={<MorningPageForm />} />
             </Route>
-            <Route path="create" element={<MorningPageForm />} />
           </Route>
         </Route>
       </Routes>

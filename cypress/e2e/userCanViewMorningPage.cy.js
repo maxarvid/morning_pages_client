@@ -1,16 +1,22 @@
 describe("When user view single morning page", () => {
   beforeEach(() => {
-    cy.userVisit();
-    cy.visitMorningPages();
+    cy.interceptValidateToken();
+    cy.interceptThemes();
+    cy.visitApplicationWithToken();
+    cy.setUserInApplicationState();
+    cy.interceptMorningPages();
+    cy.get("[data-cy=morning-pages-btn]").click();
+    cy.wait("@getMorningPages");
   });
 
   describe("successfully", () => {
     beforeEach(() => {
-      cy.viewMorningPage();
+      cy.interceptMorningPage();
+      cy.get("[data-cy=morning-page]").first().click();
+      cy.wait("@getMorningPage");
     });
 
     it("is expected to display the morning page with its body", () => {
-      cy.wait("@getMorningPage");
       cy.get("[data-cy=morning-page-body]").should(
         "contain.text",
         "And this is the body"
@@ -20,8 +26,11 @@ describe("When user view single morning page", () => {
 
   describe("unsuccessfully", () => {
     beforeEach(() => {
-      cy.intercept("GET", "**/morning_pages/1", { statusCode: 422 });
+      cy.intercept("GET", "**/morning_pages/1", { statusCode: 422 }).as(
+        "getMorningPageError"
+      );
       cy.get("[data-cy=morning-page]").first().click();
+      cy.wait("@getMorningPageError");
     });
 
     it("is expected to render an error message", () => {

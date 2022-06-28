@@ -1,16 +1,11 @@
 describe("When navigating the application", () => {
-  beforeEach(() => {
-    cy.visitThemes();
-  });
-
   describe("as an authenticated user", () => {
     beforeEach(() => {
-      cy.window()
-        .its("store")
-        .invoke("dispatch", {
-          type: "auth/setCurrentUser",
-          payload: { name: "User", email: "user@email.com" },
-        });
+      cy.interceptValidateToken();
+      cy.interceptThemes();
+      cy.visitApplicationWithToken();
+      cy.wait("@getThemes");
+      cy.setUserInApplicationState();
     });
 
     it("is expected to have a currentUser in application state", () => {
@@ -18,7 +13,7 @@ describe("When navigating the application", () => {
         .its("store")
         .invoke("getState")
         .its("auth.currentUser")
-        .should("eql", { name: "User", email: "user@email.com" });
+        .should("include", { name: "user", email: "user@email.com" });
     });
 
     it("is expected to display a navbar with link to create a new morning page", () => {
@@ -27,6 +22,7 @@ describe("When navigating the application", () => {
 
     describe('following the "create morning page" link', () => {
       beforeEach(() => {
+        cy.interceptMorningPages();
         cy.get("[data-cy=morning-page-new-btn]").click();
       });
 
@@ -41,8 +37,16 @@ describe("When navigating the application", () => {
   });
 
   describe("as a visitor", () => {
+    beforeEach(() => {
+      cy.visit("/");
+    });
+
     it("is expected NOT to display a link to create a new morning page", () => {
       cy.get("[data-cy=morning-page-new-btn]").should("not.be.exist");
+    });
+
+    it("is expected to redirect user to login screen", () => {
+      cy.url().should("include", "/login");
     });
 
     it("is expected to redirect visitor to login screen when trying to navigate to create a new morning page", () => {

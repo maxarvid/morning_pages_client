@@ -1,4 +1,4 @@
-import "./userCanSeeListOfMorningPages.cy";
+import "./userCanViewMorningPages.cy"
 import "./userCanViewMorningPage.cy";
 import "./userSeesListOfThemes.cy";
 import "./userCanCreateMorningPage.cy";
