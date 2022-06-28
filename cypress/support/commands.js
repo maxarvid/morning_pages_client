@@ -44,7 +44,14 @@ Cypress.Commands.add("setUserInApplicationState", () => {
     });
 });
 
-// All the rest
+// Combinations
+Cypress.Commands.add("userVisit", () => {
+  cy.interceptValidateToken();
+  cy.interceptThemes();
+  cy.visitApplicationWithToken();
+  cy.setUserInApplicationState();
+});
+
 Cypress.Commands.add("visitThemes", () => {
   cy.intercept("GET", "**/themes", { fixture: "themesResponse.json" });
   cy.visit("/");

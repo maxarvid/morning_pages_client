@@ -1,9 +1,6 @@
 describe("When user creates a new morning page", () => {
   beforeEach(() => {
-    cy.interceptValidateToken();
-    cy.interceptThemes();
-    cy.visitApplicationWithToken();
-    cy.setUserInApplicationState();
+    cy.userVisit();
   });
 
   describe("successfully", () => {

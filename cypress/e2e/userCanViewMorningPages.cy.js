@@ -1,9 +1,6 @@
 describe("When user navigates to their Morning Pages", () => {
   beforeEach(() => {
-    cy.interceptValidateToken();
-    cy.interceptThemes();
-    cy.visitApplicationWithToken();
-    cy.setUserInApplicationState();
+    cy.userVisit();
   });
 
   describe("successfully", () => {

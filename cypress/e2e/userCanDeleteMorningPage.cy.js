@@ -1,9 +1,6 @@
 describe("When user deletes a morning page", () => {
   beforeEach(() => {
-    cy.interceptValidateToken();
-    cy.interceptThemes();
-    cy.visitApplicationWithToken();
-    cy.setUserInApplicationState();
+    cy.userVisit();
     cy.visitMorningPages();
     cy.viewMorningPage();
   });

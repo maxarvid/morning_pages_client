@@ -1,9 +1,6 @@
 describe("When user view single morning page", () => {
   beforeEach(() => {
-    cy.interceptValidateToken();
-    cy.interceptThemes();
-    cy.visitApplicationWithToken();
-    cy.setUserInApplicationState();
+    cy.userVisit();
     cy.interceptMorningPages();
     cy.get("[data-cy=morning-pages-btn]").click();
     cy.wait("@getMorningPages");
