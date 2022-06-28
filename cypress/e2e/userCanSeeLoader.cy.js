@@ -14,6 +14,6 @@ describe("When authenticating, before the server responds", () => {
     cy.get("[data-cy=loader-container]")
       .should("contain.text", "Loading")
       .then(() => resolveReq());
-    cy.get("[data-cy=loader-container").should("not.exist");
+    cy.get("[data-cy=loader-container]").should("not.exist");
   });
 });

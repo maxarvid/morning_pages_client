@@ -5,7 +5,9 @@ describe("When user navigates to their Morning Pages", () => {
 
   describe("successfully", () => {
     beforeEach(() => {
-      cy.visitMorningPages();
+      cy.interceptMorningPages();
+      cy.get("[data-cy=morning-pages-btn]").click();
+      cy.wait("@getMorningPages");
     });
 
     it("is expected to make an API call with headers", () => {
@@ -28,8 +30,9 @@ describe("When user navigates to their Morning Pages", () => {
     beforeEach(() => {
       cy.intercept("GET", "**/morning_pages", {
         statusCode: 422,
-      });
+      }).as("getMorningPagesError");
       cy.get("[data-cy=morning-pages-btn]").click();
+      cy.wait("@getMorningPagesError");
     });
 
     it("is expected to render an error message", () => {

@@ -1,7 +1,6 @@
 describe("When user creates a new morning page", () => {
   beforeEach(() => {
     cy.userVisit();
-    cy.visitMorningPages();
   });
 
   describe("successfully", () => {

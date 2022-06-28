@@ -28,7 +28,7 @@ const MorningPageForm = () => {
   };
 
   return (
-    <Form onSubmit={MorningPageForm}>
+    <Form data-cy="morning-page-form" onSubmit={MorningPageForm}>
       <MorningPageFormTextInputs />
       <MorningPageFormDropdown />
       <Button data-cy="morning-page-submit-btn" type="submit" content="Save" />

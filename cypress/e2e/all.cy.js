@@ -1,9 +1,10 @@
-import "./userCanSeeListOfMorningPages.cy";
+import "./userCanViewMorningPages.cy"
 import "./userCanViewMorningPage.cy";
-import "./visitorSeesListOfThemes.cy";
+import "./userSeesListOfThemes.cy";
 import "./userCanCreateMorningPage.cy";
 import "./userCanSignIn.cy";
 import "./userCanCreateAccount.cy";
 import "./userCanSeeLoader.cy";
 import "./userCanDeleteMorningPage.cy";
 import "./userCanUpdateMorningPage.cy";
+import "./userCanNavigateApplication.cy";
